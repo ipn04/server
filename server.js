@@ -9,10 +9,11 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/data")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("Connected Successfully");
-    app.listen(5000, () => console.log("Server started"));
+    const port = process.env.PORT || 5000; 
+    app.listen(port, () => console.log(`Server started ${port}`));
 })
 .catch((error) => console.log(error));
 
