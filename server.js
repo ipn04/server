@@ -121,7 +121,7 @@ app.post("/addProduct", authenticateToken, async (req, res) => {
 app.get("/products", authenticateToken, async (req, res) => {
   try {
     const products = await Product.find().populate("userId", "username");;  // public || nakikita ng lahat
-    // const products = await Product.find({userId: req.user.userId}).populate("userId", "username");;  if private || nakikita lang sariling post
+    // const products = await Product.find({userId: req.user.userId}).populate("userId", "username");;  if private || nakikita lang sariling posts
     res.json(products);  
   } catch (error) {
     console.error("Error retrieving products", error);
